@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "employee-portal-ui"
+  "defaultProject": "employee-portal-ui",
+  "cli": {
+    "analytics": false
+  }
 }
