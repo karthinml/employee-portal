@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -33,10 +34,16 @@ public class EmployeeControllerTest {
     @Test
     public void should_be_able_to_register_employee_in_employee_portal() throws Exception {
         Employee actual = new Employee();
+        actual.setEmployeeId("1001");
+        actual.setFirstName("Karthik");
+        actual.setLastName("Ramasamy");
+        actual.setGender("Male");
+        actual.setDepartment("J1G");
         when(employeeService.registerEmployee(any(Employee.class))).thenReturn(actual);
         mockMvc.perform(MockMvcRequestBuilders.post("/v1/employees")
                 .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
                 .content(mapper.writeValueAsString(new Employee())))
-                .andExpect(status().isCreated());
+                .andExpect(status().isCreated())
+                .andExpect(content().json(mapper.writeValueAsString(actual)));
     }
 }
