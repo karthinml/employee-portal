@@ -1,9 +1,13 @@
 package com.kata.employee.employeeportalservice.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -12,9 +16,13 @@ import static com.kata.employee.employeeportalservice.constant.EmployeePortalSer
 
 @Data
 @Builder
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Employee {
 
     @NotBlank(message = EMPLOYEE_ID_FIELD_MANDATORY_MESSAGE)
+    @Id
     private String employeeId;
     @NotBlank(message = FIRST_NAME_FIELD_MANDATORY_MESSAGE)
     private String firstName;
