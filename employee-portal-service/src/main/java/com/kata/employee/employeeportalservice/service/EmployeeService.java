@@ -5,6 +5,9 @@ import com.kata.employee.employeeportalservice.repository.EmployeeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static jdk.nashorn.internal.objects.NativeMath.log;
 
 @Service
@@ -20,5 +23,9 @@ public class EmployeeService {
     public Employee registerEmployee(Employee employee) {
         log("Adding employee:: employee id: {}", employee.getEmployeeId());
         return employeeRepository.save(employee);
+    }
+
+    public List<Employee> getEmployees() {
+        return new ArrayList<>();
     }
 }

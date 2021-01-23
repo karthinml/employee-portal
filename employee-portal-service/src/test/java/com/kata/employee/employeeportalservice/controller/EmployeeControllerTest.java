@@ -57,15 +57,28 @@ public class EmployeeControllerTest {
 
     @Test
     public void should_get_empty_list_when_requesting_list_of_employees_in_employee_portal() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get(BASE_URL)
-                .contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(getEmployeesRequestBuilder())
                 .andExpect(status().isOk())
                 .andExpect(content().json(mapper.writeValueAsString(new ArrayList<Employee>())));
+    }
+
+    @Test
+    public void should_get_list_of_employees_registered_in_employee_portal() throws Exception {
+        ArrayList<Employee> expectedData = new ArrayList<>();
+        expectedData.add(getSampleEmployeeData());
+        when(employeeService.getEmployees()).thenReturn(expectedData);
+        mockMvc.perform(getEmployeesRequestBuilder())
+                .andExpect(status().isOk())
+                .andExpect(content().json(mapper.writeValueAsString(expectedData)));
     }
 
     private RequestBuilder addEmployeeRequestBuilder(Employee request) throws JsonProcessingException {
         return MockMvcRequestBuilders.post(BASE_URL)
                 .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
                 .content(mapper.writeValueAsString(request));
+    }
+
+    private RequestBuilder getEmployeesRequestBuilder() throws JsonProcessingException {
+        return MockMvcRequestBuilders.get(BASE_URL).contentType(MediaType.APPLICATION_JSON);
     }
 }

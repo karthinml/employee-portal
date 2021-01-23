@@ -28,6 +28,6 @@ public class EmployeeController {
 
     @GetMapping(produces = "application/json")
     public ResponseEntity<List> getEmployees() {
-        return new ResponseEntity<>(new ArrayList<Employee>(), HttpStatus.OK);
+        return new ResponseEntity<>(employeeService.getEmployees(), HttpStatus.OK);
     }
 }
