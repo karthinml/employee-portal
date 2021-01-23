@@ -31,16 +31,14 @@ public class EmployeeControllerTest {
     @MockBean
     private EmployeeService employeeService;
 
+    private final String BASE_URL = "/v1/employees";
+
     @Test
     public void should_be_able_to_register_employee_in_employee_portal() throws Exception {
-        Employee actual = new Employee();
-        actual.setEmployeeId("1001");
-        actual.setFirstName("Karthik");
-        actual.setLastName("Ramasamy");
-        actual.setGender("Male");
-        actual.setDepartment("J1G");
+        Employee actual = Employee.builder().employeeId("1001").firstName("Karthik")
+                .lastName("Ramasamy").gender("Male").department("J1G").build();
         when(employeeService.registerEmployee(any(Employee.class))).thenReturn(actual);
-        mockMvc.perform(MockMvcRequestBuilders.post("/v1/employees")
+        mockMvc.perform(MockMvcRequestBuilders.post(BASE_URL)
                 .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
                 .content(mapper.writeValueAsString(actual)))
                 .andExpect(status().isCreated())
