@@ -42,8 +42,9 @@ public class EmployeeControllerTest {
         when(employeeService.registerEmployee(any(Employee.class))).thenReturn(actual);
         mockMvc.perform(MockMvcRequestBuilders.post("/v1/employees")
                 .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
-                .content(mapper.writeValueAsString(new Employee())))
+                .content(mapper.writeValueAsString(actual)))
                 .andExpect(status().isCreated())
                 .andExpect(content().json(mapper.writeValueAsString(actual)));
     }
+
 }
