@@ -35,6 +35,7 @@ public class EmployeeServiceTest {
         ArrayList<Employee> expected = new ArrayList<>();
         expected.add(getSampleEmployeeData());
         when(employeeRepositoryMock.findAllByOrderByFirstNameAsc()).thenReturn(expected);
+        assertEquals(employeeService.getEmployees(), expected);
     }
 
     @Test(expected = EmployeeAlreadyRegisteredException.class)
