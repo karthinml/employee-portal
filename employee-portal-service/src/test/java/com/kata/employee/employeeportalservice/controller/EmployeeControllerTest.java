@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import static com.kata.employee.employeeportalservice.constant.EmployeePortalServiceConstants.DATE_FORMAT;
 import static com.kata.employee.employeeportalservice.helper.EmployeePortalServiceTestHelper.getSampleEmployeeData;
@@ -54,9 +55,30 @@ public class EmployeeControllerTest {
                 .andExpect(status().isBadRequest());
     }
 
+    @Test
+    public void should_get_empty_list_when_requesting_list_of_employees_in_employee_portal() throws Exception {
+        mockMvc.perform(getEmployeesRequestBuilder())
+                .andExpect(status().isOk())
+                .andExpect(content().json(mapper.writeValueAsString(new ArrayList<Employee>())));
+    }
+
+    @Test
+    public void should_get_list_of_employees_registered_in_employee_portal() throws Exception {
+        ArrayList<Employee> expectedData = new ArrayList<>();
+        expectedData.add(getSampleEmployeeData());
+        when(employeeService.getEmployees()).thenReturn(expectedData);
+        mockMvc.perform(getEmployeesRequestBuilder())
+                .andExpect(status().isOk())
+                .andExpect(content().json(mapper.writeValueAsString(expectedData)));
+    }
+
     private RequestBuilder addEmployeeRequestBuilder(Employee request) throws JsonProcessingException {
         return MockMvcRequestBuilders.post(BASE_URL)
                 .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
                 .content(mapper.writeValueAsString(request));
+    }
+
+    private RequestBuilder getEmployeesRequestBuilder() throws JsonProcessingException {
+        return MockMvcRequestBuilders.get(BASE_URL).contentType(MediaType.APPLICATION_JSON);
     }
 }
