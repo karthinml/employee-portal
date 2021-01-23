@@ -1,5 +1,6 @@
 package com.kata.employee.employeeportalservice.service;
 
+import com.kata.employee.employeeportalservice.exception.EmployeeAlreadyRegisteredException;
 import com.kata.employee.employeeportalservice.model.Employee;
 import com.kata.employee.employeeportalservice.repository.EmployeeRepository;
 import org.junit.Test;
@@ -25,7 +26,7 @@ public class EmployeeServiceTest {
     }
 
     @Test
-    public void should_get_empty_list_when_requesting_employee_list_from_portal() throws ParseException {
+    public void should_get_empty_list_when_requesting_employee_list_from_portal() {
         assertEquals(new ArrayList<>(), employeeService.getEmployees());
     }
 
@@ -34,6 +35,12 @@ public class EmployeeServiceTest {
         ArrayList<Employee> expected = new ArrayList<>();
         expected.add(getSampleEmployeeData());
         when(employeeRepositoryMock.findAllByOrderByFirstNameAsc()).thenReturn(expected);
+    }
+
+    @Test(expected = EmployeeAlreadyRegisteredException.class)
+    public void should_get_exception_when_trying_to_add_already_registered_employee() throws ParseException {
+        when(employeeRepositoryMock.existsByEmployeeId(any(String.class))).thenReturn(true);
+        employeeService.registerEmployee(getSampleEmployeeData());
     }
 
 }
