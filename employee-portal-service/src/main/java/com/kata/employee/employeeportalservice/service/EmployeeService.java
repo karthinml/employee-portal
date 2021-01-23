@@ -2,9 +2,13 @@ package com.kata.employee.employeeportalservice.service;
 
 import com.kata.employee.employeeportalservice.model.Employee;
 import com.kata.employee.employeeportalservice.repository.EmployeeRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import static jdk.nashorn.internal.objects.NativeMath.log;
+
 @Service
+@Slf4j
 public class EmployeeService {
 
     private EmployeeRepository employeeRepository;
@@ -14,6 +18,7 @@ public class EmployeeService {
     }
 
     public Employee registerEmployee(Employee employee) {
+        log("Adding employee:: employee id: {}", employee.getEmployeeId());
         return employeeRepository.save(employee);
     }
 }
