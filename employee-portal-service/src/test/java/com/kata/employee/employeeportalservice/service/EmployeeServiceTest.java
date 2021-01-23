@@ -39,7 +39,7 @@ public class EmployeeServiceTest {
 
     @Test(expected = EmployeeAlreadyRegisteredException.class)
     public void should_get_exception_when_trying_to_add_already_registered_employee() throws ParseException {
-        when(employeeRepositoryMock.save(any(Employee.class))).thenThrow(new EmployeeAlreadyRegisteredException());
+        when(employeeRepositoryMock.existsByEmployeeId(any(String.class))).thenReturn(true);
         employeeService.registerEmployee(getSampleEmployeeData());
     }
 
