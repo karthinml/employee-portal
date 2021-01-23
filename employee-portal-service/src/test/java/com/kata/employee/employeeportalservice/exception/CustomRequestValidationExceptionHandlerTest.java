@@ -17,6 +17,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import java.util.*;
 
+import static com.kata.employee.employeeportalservice.constant.EmployeePortalServiceConstants.*;
 import static org.powermock.api.mockito.PowerMockito.when;
 
 @RunWith(PowerMockRunner.class)
@@ -33,7 +34,7 @@ public class CustomRequestValidationExceptionHandlerTest {
 
     @Test
     public void should_handle_method_argument_validation_exception_and_return_in_proper_format() {
-        List<String> expectedMessage = Arrays.asList("First name is required", "Last name is required");
+        List<String> expectedMessage = Arrays.asList(FIRST_NAME_FIELD_MANDATORY_MESSAGE, LAST_NAME_FIELD_MANDATORY_MESSAGE);
         when(methodArgumentNotValidMockedException.getBindingResult()).thenReturn(result);
         when(result.getFieldErrors()).thenReturn(getDummyFieldErrors());
         final ResponseEntity<Object> responseEntity = advice.handleMethodArgumentNotValid(methodArgumentNotValidMockedException, new HttpHeaders(), HttpStatus.BAD_REQUEST, Mockito.mock(WebRequest.class));
@@ -43,9 +44,9 @@ public class CustomRequestValidationExceptionHandlerTest {
     }
 
     private List<FieldError> getDummyFieldErrors() {
-        final List<FieldError> fieldErrors = new ArrayList<FieldError>();
-        fieldErrors.add(new FieldError("firstName", "field", "First name is required"));
-        fieldErrors.add(new FieldError("lastName", "field", "Last name is required"));
+        final List<FieldError> fieldErrors = new ArrayList<>();
+        fieldErrors.add(new FieldError("firstName", "field", FIRST_NAME_FIELD_MANDATORY_MESSAGE));
+        fieldErrors.add(new FieldError("lastName", "field", LAST_NAME_FIELD_MANDATORY_MESSAGE));
         return fieldErrors;
     }
 }

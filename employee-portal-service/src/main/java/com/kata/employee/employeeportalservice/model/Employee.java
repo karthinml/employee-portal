@@ -8,22 +8,24 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
+import static com.kata.employee.employeeportalservice.constant.EmployeePortalServiceConstants.*;
+
 @Data
 @Builder
 public class Employee {
 
-    @NotBlank(message = "Employee ID field is mandatory")
+    @NotBlank(message = EMPLOYEE_ID_FIELD_MANDATORY_MESSAGE)
     private String employeeId;
-    @NotBlank(message = "First name field is mandatory")
+    @NotBlank(message = FIRST_NAME_FIELD_MANDATORY_MESSAGE)
     private String firstName;
-    @NotBlank(message = "Last name field is mandatory")
+    @NotBlank(message = LAST_NAME_FIELD_MANDATORY_MESSAGE)
     private String lastName;
-    @NotBlank(message = "Department field is mandatory")
+    @NotBlank(message = GENDER_FIELD_MANDATORY_MESSAGE)
     private String gender;
-    @NotNull(message = "Date of birth field is mandatory")
-    @DateTimeFormat(pattern = "MM-dd-yyyy")
+    @NotNull(message = DATE_OF_BIRTH_FIELD_MANDATORY_MESSAGE)
+    @DateTimeFormat(pattern = DATE_FORMAT)
     private Date dateOfBirth;
-    @NotBlank(message = "Department field is mandatory")
+    @NotBlank(message = DEPARTMENT_FIELD_MANDATORY_MESSAGE)
     private String department;
 
 }
