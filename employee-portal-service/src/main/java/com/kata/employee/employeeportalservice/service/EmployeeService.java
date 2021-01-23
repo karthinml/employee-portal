@@ -7,6 +7,6 @@ import org.springframework.stereotype.Service;
 public class EmployeeService {
 
     public Employee registerEmployee(Employee employee) {
-        return null;
+        return employee;
     }
 }
