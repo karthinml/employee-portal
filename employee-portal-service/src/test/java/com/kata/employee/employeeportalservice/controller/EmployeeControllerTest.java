@@ -12,7 +12,13 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -36,13 +42,24 @@ public class EmployeeControllerTest {
     @Test
     public void should_be_able_to_register_employee_in_employee_portal() throws Exception {
         Employee actual = Employee.builder().employeeId("1001").firstName("Karthik")
-                .lastName("Ramasamy").gender("Male").department("J1G").build();
+                .lastName("Ramasamy").gender("Male").dateOfBirth(new SimpleDateFormat("MM-dd-yyyy").parse("08-16-1989"))
+                .department("J1G").build();
         when(employeeService.registerEmployee(any(Employee.class))).thenReturn(actual);
         mockMvc.perform(MockMvcRequestBuilders.post(BASE_URL)
                 .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
                 .content(mapper.writeValueAsString(actual)))
                 .andExpect(status().isCreated())
                 .andExpect(content().json(mapper.writeValueAsString(actual)));
+    }
+
+    @Test
+    public void should_return_exception_when_registering_employee_without_all_mandatory_attributes() throws Exception {
+        Employee request = Employee.builder().employeeId("1001").firstName("Karthik")
+                .lastName("Ramasamy").gender("Male").build();
+        mockMvc.perform(MockMvcRequestBuilders.post(BASE_URL)
+                .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
+                .content(mapper.writeValueAsString(request)))
+                .andExpect(status().isBadRequest());
     }
 
 }
