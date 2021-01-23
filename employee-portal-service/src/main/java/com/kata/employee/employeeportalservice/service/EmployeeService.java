@@ -14,7 +14,7 @@ import static jdk.nashorn.internal.objects.NativeMath.log;
 @Slf4j
 public class EmployeeService {
 
-    private EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
 
     public EmployeeService(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
@@ -26,6 +26,8 @@ public class EmployeeService {
     }
 
     public List<Employee> getEmployees() {
-        return new ArrayList<>();
+        List<Employee> employees = employeeRepository.findAllByOrderByFirstNameAsc();
+        log("Sending {} employee details", employees.size());
+        return employees;
     }
 }

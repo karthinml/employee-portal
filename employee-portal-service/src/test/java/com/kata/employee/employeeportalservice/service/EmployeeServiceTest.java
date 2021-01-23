@@ -29,4 +29,11 @@ public class EmployeeServiceTest {
         assertEquals(new ArrayList<>(), employeeService.getEmployees());
     }
 
+    @Test
+    public void should_be_able_to_get_list_of_employees_registered_in_employee_portal() throws ParseException {
+        ArrayList<Employee> expected = new ArrayList<>();
+        expected.add(getSampleEmployeeData());
+        when(employeeRepositoryMock.findAllByOrderByFirstNameAsc()).thenReturn(expected);
+    }
+
 }
