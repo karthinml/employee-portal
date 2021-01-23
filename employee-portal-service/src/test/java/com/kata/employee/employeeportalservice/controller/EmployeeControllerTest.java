@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.text.SimpleDateFormat;
 
 import static com.kata.employee.employeeportalservice.constant.EmployeePortalServiceConstants.DATE_FORMAT;
+import static com.kata.employee.employeeportalservice.helper.EmployeePortalServiceTestHelper.getSampleEmployeeData;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -50,8 +51,7 @@ public class EmployeeControllerTest {
 
     @Test
     public void should_return_exception_when_registering_employee_without_all_mandatory_attributes() throws Exception {
-        Employee request = Employee.builder().employeeId("1001").firstName("Karthik")
-                .lastName("Ramasamy").gender("Male").build();
+        Employee request = getSampleEmployeeData();
         mockMvc.perform(addEmployeeRequestBuilder(request))
                 .andExpect(status().isBadRequest());
     }
