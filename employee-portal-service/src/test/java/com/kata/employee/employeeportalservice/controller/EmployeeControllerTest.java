@@ -40,18 +40,16 @@ public class EmployeeControllerTest {
 
     @Test
     public void should_be_able_to_register_employee_in_employee_portal() throws Exception {
-        Employee expected = Employee.builder().employeeId("1001").firstName("Karthik")
-                .lastName("Ramasamy").gender("Male").dateOfBirth(new SimpleDateFormat(DATE_FORMAT).parse("08-16-1989"))
-                .department("J1G").build();
-        when(employeeService.registerEmployee(any(Employee.class))).thenReturn(expected);
-        mockMvc.perform(addEmployeeRequestBuilder(expected))
+        when(employeeService.registerEmployee(any(Employee.class))).thenReturn(getSampleEmployeeData());
+        mockMvc.perform(addEmployeeRequestBuilder(getSampleEmployeeData()))
                 .andExpect(status().isCreated())
-                .andExpect(content().json(mapper.writeValueAsString(expected)));
+                .andExpect(content().json(mapper.writeValueAsString(getSampleEmployeeData())));
     }
 
     @Test
     public void should_return_exception_when_registering_employee_without_all_mandatory_attributes() throws Exception {
-        Employee request = getSampleEmployeeData();
+        Employee request = Employee.builder().employeeId("1001").firstName("Karthik")
+                .lastName("Ramasamy").gender("Male").build();
         mockMvc.perform(addEmployeeRequestBuilder(request))
                 .andExpect(status().isBadRequest());
     }

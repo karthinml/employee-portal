@@ -26,10 +26,7 @@ public class EmployeeServiceTest {
     private final EmployeeService employeeService = new EmployeeService(employeeRepositoryMock);
 
     @Test
-    public void should_be_able_to_add_employee_to_employee_portal() throws ParseException {
-        Employee expectedData = getSampleEmployeeData();
-        when(employeeRepositoryMock.save(any(Employee.class))).thenReturn(expectedData);
-        Employee actualData = employeeService.registerEmployee(expectedData);
-        assertEquals(expectedData, actualData);
+    public void should_be_able_to_add_employee_to_employee_portal() {
+        assertEquals(getSampleEmployeeData(), employeeService.registerEmployee(getSampleEmployeeData()));
     }
 }
