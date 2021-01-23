@@ -5,6 +5,7 @@ import com.kata.employee.employeeportalservice.repository.EmployeeRepository;
 import org.junit.Test;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 
 import static com.kata.employee.employeeportalservice.helper.EmployeePortalServiceTestHelper.getSampleEmployeeData;
 import static org.junit.Assert.assertEquals;
@@ -22,4 +23,10 @@ public class EmployeeServiceTest {
         when(employeeRepositoryMock.save(any(Employee.class))).thenReturn(getSampleEmployeeData());
         assertEquals(getSampleEmployeeData(), employeeService.registerEmployee(getSampleEmployeeData()));
     }
+
+    @Test
+    public void should_get_empty_list_when_requesting_employee_list_from_portal() throws ParseException {
+        assertEquals(new ArrayList<>(), employeeService.getEmployees());
+    }
+
 }
