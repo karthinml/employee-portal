@@ -7,11 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/employees")
+@RequestMapping("/api/v1/employees")
 public class EmployeeController {
 
     private final EmployeeService employeeService;
@@ -27,7 +26,7 @@ public class EmployeeController {
     }
 
     @GetMapping(produces = "application/json")
-    public ResponseEntity<List> getEmployees() {
+    public ResponseEntity<List<Employee>> getEmployees() {
         return new ResponseEntity<>(employeeService.getEmployees(), HttpStatus.OK);
     }
 }

@@ -1,3 +1,4 @@
+@Ignore
 Feature: Register employee to the employee portal.
 
   Scenario: User should be able to register an employee to employee portal with all valid parameters.

@@ -37,7 +37,7 @@ public class EmployeeControllerTest {
     @MockBean
     private EmployeeService employeeService;
 
-    private final String BASE_URL = "/v1/employees";
+    private final String BASE_URL = "/api/v1/employees";
 
     @Test
     public void should_be_able_to_register_employee_in_employee_portal() throws Exception {
@@ -78,7 +78,7 @@ public class EmployeeControllerTest {
                 .content(mapper.writeValueAsString(request));
     }
 
-    private RequestBuilder getEmployeesRequestBuilder() throws JsonProcessingException {
+    private RequestBuilder getEmployeesRequestBuilder() {
         return MockMvcRequestBuilders.get(BASE_URL).contentType(MediaType.APPLICATION_JSON);
     }
 }

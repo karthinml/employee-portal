@@ -48,7 +48,6 @@ public class EmployeeRepositoryTest {
         employee.setFirstName("Arun");
         expected.add(employee);
         employeeRepository.saveAll(expected);
-        List<Employee> data = employeeRepository.findAllByOrderByFirstNameAsc();
         assertEquals(employeeRepository.findAllByOrderByFirstNameAsc(),
                 expected.stream().sorted(Comparator.comparing(Employee::getFirstName))
                         .collect(Collectors.toList()));
