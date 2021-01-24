@@ -1,4 +1,4 @@
-package com.kata.employee.employeeportalservice.cucumber.stepdefs;
+package com.kata.employee.employeeportalservice.cucumber.stepdefs.getlist;
 
 import com.kata.employee.employeeportalservice.cucumber.SpringIntegrationTest;
 import com.kata.employee.employeeportalservice.model.Employee;

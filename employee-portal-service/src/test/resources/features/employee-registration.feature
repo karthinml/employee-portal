@@ -1,11 +1,11 @@
-@Ignore
+@registration
 Feature: Register employee to the employee portal.
 
   Scenario: User should be able to register an employee to employee portal with all valid parameters.
     Given the user register an employee with below attributes
       | employeeId | firstName | lastName | gender | dateOfBirth | department |
       | 1001       | Karthik   | Ramasamy | Male   | 16/08/1989  | J1Q        |
-    When the user makes request to register in employee portal
+    When the user makes request to register and employee in employee portal
     Then the employee will be registered to employee portal
     And the user gets below response with status code 201
       | employeeId | firstName | lastName | gender | dateOfBirth | department |
@@ -24,8 +24,12 @@ Feature: Register employee to the employee portal.
 
 
   Scenario Outline: User should get exception when trying to register an employee with missing attributes.
-    When the user makes request to register in employee portal
-    Then the user get error message as <errorMessages> with status code 400
+    Given the user register an employee with below attributes
+      | employeeId   | firstName   | lastName   | gender   | dateOfBirth   | department   |
+      | <employeeId> | <firstName> | <lastName> | <gender> | <dateOfBirth> | <department> |
+    When the user makes request to register and employee in employee portal
+    Then the user will get error messages as "<errorMessages>" with status code 400
+
     Examples:
       | employeeId | firstName | lastName | gender | dateOfBirth | department | errorMessages                                                  |
       |            | Shiva     | Prasad   | Male   | 11/10/1989  | J1Q        | Employee ID field is mandatory                                 |
