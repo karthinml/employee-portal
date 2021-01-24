@@ -1,3 +1,4 @@
+@Ignore
 Feature: Get all the employees registered in employee portal
 
   Scenario: User will get empty list when there is no employees registered in employee portal.
