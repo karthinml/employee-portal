@@ -1,4 +1,4 @@
-package com.kata.employee.employeeportalservice.cucumber.stepdefs;
+package com.kata.employee.employeeportalservice.cucumber.stepdefs.getlist;
 
 import com.kata.employee.employeeportalservice.cucumber.SpringIntegrationTest;
 import com.kata.employee.employeeportalservice.model.Employee;
@@ -19,6 +19,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.kata.employee.employeeportalservice.constant.EmployeePortalServiceConstants.DATE_FORMAT;
+import static com.kata.employee.employeeportalservice.helper.EmployeePortalServiceTestHelper.getDateFromString;
+import static com.kata.employee.employeeportalservice.helper.EmployeePortalServiceTestHelper.transformDataTableToEmployeeList;
 import static org.junit.Assert.assertEquals;
 
 public class ListEmployeesStepDefs extends SpringIntegrationTest {
@@ -63,27 +65,6 @@ public class ListEmployeesStepDefs extends SpringIntegrationTest {
     public void the_user_will_get_the_below_list_of_employees_with_the_same_order(io.cucumber.datatable.DataTable dataTable) {
         List<Employee> actualData = actualResponse.getBody();
         assertEquals(expectedData, actualData);
-    }
-
-    private List<Employee> transformDataTableToEmployeeList(List<Map<String, String>> dataTable) {
-        return dataTable.stream().map(mapEntry -> new Employee(
-                mapEntry.get("employeeId"),
-                mapEntry.get("firstName"),
-                mapEntry.get("lastName"),
-                mapEntry.get("gender"),
-                getDateFromString(mapEntry.get("dateOfBirth")),
-                mapEntry.get("department")
-        )).collect(Collectors.toList());
-    }
-
-    private Date getDateFromString(String dateString) {
-        DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-        Date date = null;
-        try {
-            date = dateFormat.parse(dateString);
-        } catch (ParseException exception) {
-        }
-        return date;
     }
 
 }
