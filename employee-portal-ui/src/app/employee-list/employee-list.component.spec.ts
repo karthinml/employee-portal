@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EmployeeListComponent } from './employee-list.component';
 
-describe('EmployeeListComponent', () => {
+fdescribe('EmployeeListComponent', () => {
   let component: EmployeeListComponent;
   let fixture: ComponentFixture<EmployeeListComponent>;
 
@@ -21,5 +21,9 @@ describe('EmployeeListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have employee list property initialized with empty array', () => {
+    expect(component.employees).toEqual([]);
   });
 });
