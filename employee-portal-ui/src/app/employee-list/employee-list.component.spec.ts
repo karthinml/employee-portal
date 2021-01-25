@@ -4,8 +4,9 @@ import { EmployeeListComponent } from './employee-list.component';
 import {EmployeeService} from "../employee.service";
 import {Employee} from "../model/employee";
 import {Observable} from "rxjs";
+import {HttpClientModule} from "@angular/common/http";
 
-fdescribe('EmployeeListComponent', () => {
+describe('EmployeeListComponent', () => {
   let component: EmployeeListComponent;
   let fixture: ComponentFixture<EmployeeListComponent>;
   let employeeService: EmployeeService;
@@ -13,7 +14,8 @@ fdescribe('EmployeeListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ EmployeeListComponent ],
-      providers: [EmployeeService]
+      providers: [EmployeeService],
+      imports: [HttpClientModule]
     })
     .compileComponents();
   });
@@ -22,7 +24,7 @@ fdescribe('EmployeeListComponent', () => {
     fixture = TestBed.createComponent(EmployeeListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    employeeService = TestBed.get(EmployeeService);
+    employeeService = TestBed.inject(EmployeeService);
   });
 
   it('should create', () => {

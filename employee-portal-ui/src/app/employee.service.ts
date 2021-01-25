@@ -10,8 +10,10 @@ export class EmployeeService {
 
   constructor(private http: HttpClient){ }
 
+  private employeeServiceUrl: string = "http://localhost:8080/api/v1/employees"
+
   getEmployees(): Observable<Employee[]> {
-    return new Observable<Employee[]>();
+    return this.http.get<Employee[]>(this.employeeServiceUrl);
   }
 
 }
