@@ -5,6 +5,7 @@ import {EmployeeService} from "../employee.service";
 import {Employee} from "../model/employee";
 import {Observable} from "rxjs";
 import {HttpClientModule} from "@angular/common/http";
+import {EMPLOYEE_LIST_SAMPLE_DATA} from "../app.constants";
 
 describe('EmployeeListComponent', () => {
   let component: EmployeeListComponent;
@@ -36,8 +37,7 @@ describe('EmployeeListComponent', () => {
   });
 
   it('Should call employee service and get employee list', () => {
-        let employees = [new Employee("1001", "Karthik",
-                    "Ramasamy", "Male", new Date(), "J1Q")];
+        let employees = EMPLOYEE_LIST_SAMPLE_DATA;
         spyOn(employeeService, 'getEmployees').and
             .returnValue(new Observable<Employee[]>(subscriber => {
               subscriber.next(employees);
