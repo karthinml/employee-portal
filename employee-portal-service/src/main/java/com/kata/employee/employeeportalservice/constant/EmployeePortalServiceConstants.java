@@ -12,4 +12,5 @@ public class EmployeePortalServiceConstants {
     public static final String GENDER_FIELD_MANDATORY_MESSAGE = "Gender field is mandatory";
     public static final String DATE_OF_BIRTH_FIELD_MANDATORY_MESSAGE = "Date of birth field is mandatory";
     public static final String DEPARTMENT_FIELD_MANDATORY_MESSAGE = "Department field is mandatory";
+    public static final String EMPLOYEE_ALREADY_REGISTERED_MESSAGE = "Employee already registered";
 }
