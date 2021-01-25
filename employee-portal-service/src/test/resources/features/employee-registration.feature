@@ -32,7 +32,7 @@ Feature: Register employee to the employee portal.
 
     Examples:
       | employeeId | firstName | lastName | gender | dateOfBirth | department | errorMessages                                                  |
-#      |            | Shiva     | Prasad   | Male   | 11-10-1989  | J1Q        | Employee ID field is mandatory                                 |
+      |            | Shiva     | Prasad   | Male   | 11-10-1989  | J1Q        | Employee ID field is mandatory                                 |
       | 1001       |           |          | Male   | 11-10-1989  | J1Q        | First name field is mandatory,Last name field is mandatory     |
       | 1001       | Shiva     | Prasad   |        | 11-10-1989  |            | Gender field is mandatory,Department field is mandatory        |
       | 1001       | Shiva     | Prasad   | Male   |             |            | Date of birth field is mandatory,Department field is mandatory |

@@ -9,5 +9,6 @@ import java.util.List;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, String> {
     List<Employee> findAllByOrderByFirstNameAsc();
+
     boolean existsByEmployeeId(String employeeId);
 }

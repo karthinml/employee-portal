@@ -2,8 +2,9 @@
 <div class="header">
   <h1>{{title}}</h1>
 </div>
+<button mat-raised-button color="primary" (click)="registrationFormVisible(true)"
+        *ngIf="!registerEmployee" class="register-button">Register</button>
 <div class="container">
-  <button (click)="registrationFormVisible(true)" *ngIf="!registerEmployee">Register</button>
   <app-employee-list *ngIf="!registerEmployee"></app-employee-list>
   <app-employee-registration *ngIf="registerEmployee"
                              (closeRegistrationPage)="onCloseRegistration($event)"></app-employee-registration>

@@ -23,7 +23,7 @@ public class EmployeeService {
 
     public Employee registerEmployee(Employee employee) {
         log("Adding employee:: employee id: {}", employee.getEmployeeId());
-        if(employeeRepository.existsByEmployeeId(employee.getEmployeeId())) {
+        if (employeeRepository.existsByEmployeeId(employee.getEmployeeId())) {
             throw new EmployeeAlreadyRegisteredException();
         }
         return employeeRepository.save(employee);

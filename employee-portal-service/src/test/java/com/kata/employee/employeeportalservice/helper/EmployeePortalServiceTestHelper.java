@@ -20,6 +20,7 @@ public class EmployeePortalServiceTestHelper {
                 .lastName("Ramasamy").gender("Male").dateOfBirth(new SimpleDateFormat(DATE_FORMAT).parse("08-16-1989"))
                 .department("J1G").build();
     }
+
     public static Date getDateFromString(String dateString) {
         DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
         Date date = null;
