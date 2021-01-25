@@ -2,7 +2,8 @@ package com.kata.employee.employeeportalservice.constant;
 
 public class EmployeePortalServiceConstants {
 
-    private EmployeePortalServiceConstants() {}
+    private EmployeePortalServiceConstants() {
+    }
 
     public static final String DATE_FORMAT = "MM-dd-yyyy";
     public static final String EMPLOYEE_ID_FIELD_MANDATORY_MESSAGE = "Employee ID field is mandatory";

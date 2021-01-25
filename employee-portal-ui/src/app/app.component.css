@@ -1,0 +1,39 @@
+.header {
+  text-align: center;
+  background: #333;
+  position: fixed;
+  color: #FFF;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 7em;
+  padding-top: 2em;
+  z-index: 10;
+}
+
+.container {
+  width: 95%;
+  margin: 0 auto;
+  position: absolute;
+  top: 12em;
+  left: 2em;
+}
+
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+.notification-bar {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  height: auto;
+}
+
+.register-button {
+  top: 9em;
+  float: right;
+  right: 9em;
+}
