@@ -3,3 +3,8 @@ server:
     include-message: always
     include-binding-errors: always
   port: 8080
+
+spring:
+  jackson:
+    serialization:
+      indent_output: true

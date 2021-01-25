@@ -1,7 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Employee} from "../model/employee";
-import {EMPLOYEE_LIST_SAMPLE_DATA} from "../app.constants";
 import {EmployeeService} from "../employee.service";
 import {NotificationService} from "../notification/notification.service";
 
@@ -33,17 +32,15 @@ export class EmployeeRegistrationComponent implements OnInit {
   }
 
   registerEmployee(employee: Employee) {
-    this.employeeService.addEmployee(employee).subscribe(data => {
+    this.employeeService.addEmployee(employee).subscribe(() => {
       this.notificationService.notify("Employee registration success!!", "success");
       this.closeRegistrationPage.emit(true);
     }, error => {
-      setTimeout(() => {
-      }, 10000)
-      this.notificationService.notify("Employee registration failed!!", "error");
+      this.notificationService.notify("Employee registration failed!! "+ error.error, "error");
     });
   }
 
   close(value: boolean) {
-    this.closeRegistrationPage.emit(true);
+    this.closeRegistrationPage.emit(value);
   }
 }
