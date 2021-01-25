@@ -8,8 +8,12 @@ import {HttpClientModule} from "@angular/common/http";
 import { AgGridModule } from 'ag-grid-angular';
 import { EmployeeRegistrationComponent } from './employee-registration/employee-registration.component'
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatError, MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatButtonModule} from "@angular/material/button";
+import {MatRadioButton, MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
@@ -19,13 +23,17 @@ import {MatInputModule} from "@angular/material/input";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     AgGridModule.withComponents([]),
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
