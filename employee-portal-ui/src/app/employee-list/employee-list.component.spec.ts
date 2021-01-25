@@ -6,6 +6,7 @@ import {Employee} from "../model/employee";
 import {Observable} from "rxjs";
 import {HttpClientModule} from "@angular/common/http";
 import {EMPLOYEE_LIST_COLUMN_DEFINITION, EMPLOYEE_LIST_SAMPLE_DATA} from "../app.constants";
+import {AppComponent} from "../app.component";
 
 fdescribe('EmployeeListComponent', () => {
   let component: EmployeeListComponent;
@@ -49,6 +50,12 @@ fdescribe('EmployeeListComponent', () => {
         component.ngOnInit();
         expect(employeeService.getEmployees).toHaveBeenCalled();
         expect(component.employees.length).toBe(1);
+  });
+
+  it('should have ag gird element', () => {
+    const fixture = TestBed.createComponent(EmployeeListComponent);
+    const gridElement = fixture.nativeElement.querySelector('ag-grid-angular');
+    expect(gridElement).toBeTruthy();
   });
 
 });

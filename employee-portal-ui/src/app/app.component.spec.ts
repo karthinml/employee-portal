@@ -26,4 +26,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('Employee Portal');
   });
 
+  it(`should have employee list element`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const empListElement = fixture.nativeElement.querySelector('app-employee-list');
+    expect(empListElement).toBeTruthy();
+  });
+
 });

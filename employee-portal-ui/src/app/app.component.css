@@ -1,0 +1,23 @@
+.header {
+  text-align: center;
+  background: #333;
+  position: fixed;
+  color: #FFF;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 15%;
+}
+
+.container{
+  width: 95%;
+  margin: 0 auto;
+  position: absolute;
+  top: 25%;
+  left: 3%;
+}
+
+body{
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
