@@ -12,8 +12,10 @@ export const EMPLOYEE_LIST_COLUMN_DEFINITION = [
   {headerName: 'First Name', field: 'firstName'},
   {headerName: 'Last Name', field: 'lastName'},
   {headerName: 'Gender', field: 'gender'},
-  {headerName: 'Date Of Birth', field: 'dateOfBirth', cellRenderer: (data: { value: string | number | Date; }) => {
-  return data.value ? (new Date(data.value)).toLocaleDateString() : '';
-  }},
+  {
+    headerName: 'Date Of Birth', field: 'dateOfBirth', cellRenderer: (data: { value: string | number | Date; }) => {
+      return data.value ? (new Date(data.value)).toLocaleDateString() : '';
+    }
+  },
   {headerName: 'Department', field: 'department'}
 ];

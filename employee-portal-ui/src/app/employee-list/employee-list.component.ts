@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Employee} from "../model/employee";
 import {EmployeeService} from "../employee.service";
 import {EMPLOYEE_LIST_COLUMN_DEFINITION} from "../app.constants";
@@ -14,7 +14,8 @@ export class EmployeeListComponent implements OnInit {
   rowData: any = [];
   columnDefinition: any = EMPLOYEE_LIST_COLUMN_DEFINITION;
 
-  constructor(private employeeService: EmployeeService) { }
+  constructor(private employeeService: EmployeeService) {
+  }
 
   ngOnInit(): void {
     this.employeeService.getEmployees().subscribe(data => {

@@ -5,6 +5,7 @@
 <div class="container">
   <button (click)="registrationFormVisible(true)" *ngIf="!registerEmployee">Register</button>
   <app-employee-list *ngIf="!registerEmployee"></app-employee-list>
-  <app-employee-registration *ngIf="registerEmployee" (closeRegistrationPage)="onCloseRegistration($event)"></app-employee-registration>
+  <app-employee-registration *ngIf="registerEmployee"
+                             (closeRegistrationPage)="onCloseRegistration($event)"></app-employee-registration>
 </div>
 <app-notification class="notification-bar"></app-notification>

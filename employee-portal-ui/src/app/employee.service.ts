@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Employee} from "./model/employee";
 import {Observable} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {EMPLOYEE_SERVICE_URL} from "./app.constants";
 
 @Injectable({
@@ -9,7 +9,8 @@ import {EMPLOYEE_SERVICE_URL} from "./app.constants";
 })
 export class EmployeeService {
 
-  constructor(private http: HttpClient){ }
+  constructor(private http: HttpClient) {
+  }
 
   private employeeServiceUrl: string = EMPLOYEE_SERVICE_URL;
 
@@ -21,6 +22,6 @@ export class EmployeeService {
     return this.http.post<Employee>(this.employeeServiceUrl, employee, {headers: this.httpOptions});
   }
 
-  httpOptions: any = {'Content-Type':  'application/json'};
+  httpOptions: any = {'Content-Type': 'application/json'};
 
 }

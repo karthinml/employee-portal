@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { EmployeeService } from './employee.service';
+import {EmployeeService} from './employee.service';
 import {Employee} from "./model/employee";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {Observable} from "rxjs";
@@ -25,10 +25,12 @@ describe('EmployeeService', () => {
   it('should get list of employees', () => {
     let employees = EMPLOYEE_LIST_SAMPLE_DATA;
     spyOn(http, "get").withArgs(EMPLOYEE_SERVICE_URL).and.returnValue(new Observable<Employee[]>(subscriber => {
-        subscriber.next(employees);
+      subscriber.next(employees);
     }));
     let actualResult = undefined;
-    service.getEmployees().subscribe(data => { actualResult = data });
+    service.getEmployees().subscribe(data => {
+      actualResult = data
+    });
     expect(http.get).toHaveBeenCalled();
     expect(JSON.stringify(actualResult)).toEqual(JSON.stringify(employees));
   })

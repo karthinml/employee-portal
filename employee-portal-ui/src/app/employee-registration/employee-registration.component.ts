@@ -37,7 +37,7 @@ export class EmployeeRegistrationComponent implements OnInit {
       this.notificationService.notify("Employee registration success!!", "success");
       this.closeRegistrationPage.emit(true);
     }, error => {
-      setTimeout(()=> {
+      setTimeout(() => {
       }, 10000)
       this.notificationService.notify("Employee registration failed!!", "error");
     });

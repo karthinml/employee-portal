@@ -1,25 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { EmployeeListComponent } from './employee-list.component';
+import {EmployeeListComponent} from './employee-list.component';
 import {EmployeeService} from "../employee.service";
 import {Employee} from "../model/employee";
 import {Observable} from "rxjs";
 import {HttpClientModule} from "@angular/common/http";
 import {EMPLOYEE_LIST_COLUMN_DEFINITION, EMPLOYEE_LIST_SAMPLE_DATA} from "../app.constants";
-import {AppComponent} from "../app.component";
 
-fdescribe('EmployeeListComponent', () => {
+describe('EmployeeListComponent', () => {
   let component: EmployeeListComponent;
   let fixture: ComponentFixture<EmployeeListComponent>;
   let employeeService: EmployeeService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EmployeeListComponent ],
+      declarations: [EmployeeListComponent],
       providers: [EmployeeService],
       imports: [HttpClientModule]
-    })
-    .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -42,14 +40,14 @@ fdescribe('EmployeeListComponent', () => {
   });
 
   it('Should call employee service and get employee list', () => {
-        let employees = EMPLOYEE_LIST_SAMPLE_DATA;
-        spyOn(employeeService, 'getEmployees').and
-            .returnValue(new Observable<Employee[]>(subscriber => {
-              subscriber.next(employees);
-            }));
-        component.ngOnInit();
-        expect(employeeService.getEmployees).toHaveBeenCalled();
-        expect(component.employees.length).toBe(1);
+    let employees = EMPLOYEE_LIST_SAMPLE_DATA;
+    spyOn(employeeService, 'getEmployees').and
+      .returnValue(new Observable<Employee[]>(subscriber => {
+        subscriber.next(employees);
+      }));
+    component.ngOnInit();
+    expect(employeeService.getEmployees).toHaveBeenCalled();
+    expect(component.employees.length).toBe(1);
   });
 
   it('should have ag gird element', () => {
