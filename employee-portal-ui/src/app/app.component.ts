@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title: string = 'Employee Portal';
+  registerEmployee: boolean = false;
+
+  registrationFormVisible(visibility: boolean) {
+    this.registerEmployee = visibility;
+  }
+
+  onCloseRegistration(value: boolean) {
+    this.registerEmployee = !value;
+  }
 }

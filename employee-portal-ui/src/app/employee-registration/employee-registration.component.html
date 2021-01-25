@@ -25,9 +25,20 @@
     <span *ngIf="!registrationForm.get('gender')?.valid && registrationForm.get('gender')?.touched">Please select any gender.</span>
   </mat-error>
   <mat-form-field>
+    <input formControlName="dateOfBirth" matInput [matDatepicker]="picker" placeholder="Date of birth">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker touchUi="true" #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-error>
+    <span *ngIf="!registrationForm.get('dateOfBirth')?.valid && registrationForm.get('dateOfBirth')?.touched">Please select any Date !!!</span>
+  </mat-error>
+  <mat-form-field>
     <input formControlName="department" matInput placeholder="Department"/>
   </mat-form-field>
   <mat-error>
     <span *ngIf="!registrationForm.get('department')?.valid && registrationForm.get('department')?.touched">Please enter Department.</span>
   </mat-error>
+  <button mat-raised-button color="primary" [disabled]="!registrationForm.valid">Register</button>
+  <button mat-raised-button color="accent" (click)="close(true)">Cancel</button>
 </form>
+

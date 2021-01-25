@@ -14,12 +14,17 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatButtonModule} from "@angular/material/button";
 import {MatRadioButton, MatRadioModule} from "@angular/material/radio";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatDatepicker, MatDatepickerModule} from "@angular/material/datepicker";
+import {NotificationComponent} from "./notification/notification.component";
+import {NotificationService} from "./notification/notification.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeListComponent,
-    EmployeeRegistrationComponent
+    EmployeeRegistrationComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +38,11 @@ import {MatRadioButton, MatRadioModule} from "@angular/material/radio";
     MatFormFieldModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

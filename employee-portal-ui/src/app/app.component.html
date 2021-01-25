@@ -3,5 +3,8 @@
   <h1>{{title}}</h1>
 </div>
 <div class="container">
-<app-employee-list></app-employee-list>
+  <button (click)="registrationFormVisible(true)" *ngIf="!registerEmployee">Register</button>
+  <app-employee-list *ngIf="!registerEmployee"></app-employee-list>
+  <app-employee-registration *ngIf="registerEmployee" (closeRegistrationPage)="onCloseRegistration($event)"></app-employee-registration>
 </div>
+<app-notification class="notification-bar"></app-notification>
