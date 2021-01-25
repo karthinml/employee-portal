@@ -12,14 +12,9 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static com.kata.employee.employeeportalservice.constant.EmployeePortalServiceConstants.DATE_FORMAT;
-import static com.kata.employee.employeeportalservice.helper.EmployeePortalServiceTestHelper.getDateFromString;
 import static com.kata.employee.employeeportalservice.helper.EmployeePortalServiceTestHelper.transformDataTableToEmployeeList;
 import static org.junit.Assert.assertEquals;
 
