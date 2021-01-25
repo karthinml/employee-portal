@@ -5,6 +5,7 @@ Employee portal application allow users to register employees to employee portal
 
 * [Getting Started](#getting-started)
 * [App Navigation](#app-navigation)
+* [API Documentation](#api-documentation)
 
 ## Getting Started
 To install this example application, run the following commands:
@@ -35,5 +36,8 @@ This will start the application(ui+service combined). Application will be access
 * Incase of failure registration user will be presented the error message as the notification in the bottom of the app and remains in registration page. (Eg: Duplicate
 employee id registration)
 
+## API Documentation
+
+Api documentaion can be accessed using the url "http://localhost:8080/swagger-ui"
 
 
