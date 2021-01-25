@@ -5,9 +5,9 @@ import {EmployeeService} from "../employee.service";
 import {Employee} from "../model/employee";
 import {Observable} from "rxjs";
 import {HttpClientModule} from "@angular/common/http";
-import {EMPLOYEE_LIST_SAMPLE_DATA} from "../app.constants";
+import {EMPLOYEE_LIST_COLUMN_DEFINITION, EMPLOYEE_LIST_SAMPLE_DATA} from "../app.constants";
 
-describe('EmployeeListComponent', () => {
+fdescribe('EmployeeListComponent', () => {
   let component: EmployeeListComponent;
   let fixture: ComponentFixture<EmployeeListComponent>;
   let employeeService: EmployeeService;
@@ -34,6 +34,10 @@ describe('EmployeeListComponent', () => {
 
   it('should have employee list property initialized with empty array', () => {
     expect(component.employees).toEqual([]);
+  });
+
+  it('should have column definition property with column details', () => {
+    expect(component.columnDefinition).toEqual(EMPLOYEE_LIST_COLUMN_DEFINITION);
   });
 
   it('Should call employee service and get employee list', () => {
