@@ -6,7 +6,8 @@
   width: 100%;
   top: 0;
   left: 0;
-  height: 15%;
+  height: 7em;
+  padding-top: 2em;
   z-index: 10;
 }
 
@@ -14,8 +15,8 @@
   width: 95%;
   margin: 0 auto;
   position: absolute;
-  top: 25%;
-  left: 3%;
+  top: 12em;
+  left: 2em;
 }
 
 body {
@@ -29,4 +30,10 @@ body {
   width: 100%;
   z-index: 100;
   height: auto;
+}
+
+.register-button {
+  top: 9em;
+  float: right;
+  right: 9em;
 }

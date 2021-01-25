@@ -19,12 +19,12 @@ export class EmployeeRegistrationComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private employeeService: EmployeeService,
               private notificationService: NotificationService) {
     this.registrationForm = this.formBuilder.group({
-      employeeId: new FormControl("employeeId", Validators.required),
-      firstName: new FormControl("firstName", Validators.required),
-      lastName: new FormControl("lastName", Validators.required),
-      gender: new FormControl("gender", Validators.required),
-      dateOfBirth: new FormControl("dateOfBirth", Validators.required),
-      department: new FormControl("department", Validators.required)
+      employeeId: new FormControl("", Validators.required),
+      firstName: new FormControl("", Validators.required),
+      lastName: new FormControl("", Validators.required),
+      gender: new FormControl("", Validators.required),
+      dateOfBirth: new FormControl("", Validators.required),
+      department: new FormControl("", Validators.required)
     });
   }
 
