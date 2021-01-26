@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'employee-portal-ui';
+  title: string = 'Employee Portal';
+  registerEmployee: boolean = false;
+
+  registrationFormVisible(visibility: boolean) {
+    this.registerEmployee = visibility;
+  }
+
+  onCloseRegistration(value: boolean) {
+    this.registerEmployee = !value;
+  }
 }

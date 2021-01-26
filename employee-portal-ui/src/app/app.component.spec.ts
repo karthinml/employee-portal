@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { AppComponent } from './app.component';
+import {TestBed} from '@angular/core/testing';
+import {RouterTestingModule} from '@angular/router/testing';
+import {AppComponent} from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -20,16 +20,17 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'employee-portal-ui'`, () => {
+  it(`should have as title 'Employee Portal'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('employee-portal-ui');
+    expect(app.title).toEqual('Employee Portal');
   });
 
-  it('should render title', () => {
+  it(`should have employee list element`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('employee-portal-ui app is running!');
+    const empListElement = fixture.nativeElement.querySelector('app-employee-list');
+    expect(empListElement).toBeTruthy();
   });
+
 });
