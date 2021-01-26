@@ -19,6 +19,7 @@ describe('EmployeeRegistrationComponent', () => {
   let component: EmployeeRegistrationComponent;
   let fixture: ComponentFixture<EmployeeRegistrationComponent>;
   let employeeService: EmployeeService;
+  let notificationService: NotificationService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -34,6 +35,7 @@ describe('EmployeeRegistrationComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     employeeService = TestBed.inject(EmployeeService);
+    notificationService = TestBed.inject(NotificationService);
   });
 
   it('should create', () => {
@@ -55,18 +57,41 @@ describe('EmployeeRegistrationComponent', () => {
     spyOn(component, 'registerEmployee');
     const registerButton = fixture.debugElement.query(By.css('#register_btn'));
     registerButton.triggerEventHandler('click', null);
-    fixture.whenStable().then(() => {
-      expect(component.registerEmployee).toHaveBeenCalled();
-    });
+    fixture.detectChanges();
+    expect(component.registerEmployee).toHaveBeenCalled();
   });
 
   it('should call employee service and register employee successfully', () => {
     spyOn(employeeService, 'addEmployee').and.returnValue(new Observable<Employee>(subscriber => {
       subscriber.next(EMPLOYEE_LIST_SAMPLE_DATA[0])
     }));
+    spyOn(notificationService, 'notify').and.returnValue();
+    let closeEventValue = null;
+    component.closeRegistrationPage.subscribe((value: boolean) => {
+      closeEventValue = value;
+    });
     fixture.detectChanges();
     component.registerEmployee(EMPLOYEE_LIST_SAMPLE_DATA[0]);
     expect(employeeService.addEmployee).toHaveBeenCalled();
+    expect(notificationService.notify).toHaveBeenCalledWith("Employee registration success!!", "success");
+    expect(closeEventValue).toBeTrue();
+  });
+
+  it('should throw error when the employee registration fails', () => {
+    let error = "Duplicate Registration";
+    spyOn(employeeService, 'addEmployee').and.returnValue(new Observable<Employee>(subscriber => {
+      subscriber.error({'error': error})
+    }));
+    spyOn(notificationService, 'notify').and.returnValue();
+    let closeEventValue = null;
+    component.closeRegistrationPage.subscribe((value: boolean) => {
+      closeEventValue = value;
+    });
+    fixture.detectChanges();
+    component.registerEmployee(EMPLOYEE_LIST_SAMPLE_DATA[0]);
+    expect(employeeService.addEmployee).toHaveBeenCalled();
+    expect(notificationService.notify).toHaveBeenCalledWith("Employee registration failed!! "+ error, "error");
+    expect(closeEventValue).toBeNull();
   });
 
 });
