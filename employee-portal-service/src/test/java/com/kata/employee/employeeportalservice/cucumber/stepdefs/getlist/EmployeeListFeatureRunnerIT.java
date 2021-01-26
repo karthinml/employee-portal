@@ -9,5 +9,5 @@ import org.junit.runner.RunWith;
 @CucumberOptions(features = "src/test/resources/features",
         glue = {"com.kata.employee.employeeportalservice.cucumber.stepdefs.getlist"},
         tags = "not @Ignore and @employeelist")
-public class EmployeeListFeatureRunner extends SpringIntegrationTest {
+public class EmployeeListFeatureRunnerIT extends SpringIntegrationTest {
 }
