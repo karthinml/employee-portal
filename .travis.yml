@@ -20,4 +20,6 @@ env:
 deploy:
   provider: heroku
   api_key: $HEROKU_TOKEN
-  app: jblogger
+  app: employee-portal
+  on:
+    branch: feature/ci
