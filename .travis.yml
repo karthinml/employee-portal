@@ -7,15 +7,15 @@ env:
   - secure: 6bi9DiXHRNKQHNIXjiQNVdFOmnOw86Bd4ppUPRICB0PFIqHUvPqQNrqleoApGygbfqEU6LHRE4hVa8zV0ICWAFNzm8mpr00jTw+ygBIb1AwPRKEDkgSRyKXJzdPl63Y5LlIE9V05YF9s8hh5uRq4kMngMO9PtIoW6JdOdNRcDC69HCPXbj/NyXt8xEflOeSbEoRv0nCi1xj/putKrRNi+E5FhghFKpd5tuTe8Yl7a+OiTzyEd++beJib356NS6P5uqeD+Q9ade/XWOe7797fIKb9a4AHP04WxlC55rBUGLrhtA5dTHrHR5CIQ5/hQipwAm2QRheaTgdmXLFxTtfG0wgsp/CTQrw2XPl07pvLxgUfVeSA+wkLHYpE8NbQBUPUX22BDw0pY5jBXnzpJvFPtjNzT54lOg4KFl0oRJakI152VmqhIP1zisJZD7tLCo8Ml9aR2XzqWqj6tYfPmLLut3LKV5wgsohgPbfcLjLNFWZUla+e+YRoC7CO4eQl7UX+Q00dPmfKe10ikUtib3vkXOy4HZqSeT5z3klw+bTuPy53CnSWe6BX2R88g8ecc/jzy9TlBxjgPr+UcuOnc3K/vDpgJSTJ47H134VXXBsZ6AnH9I31tJtrbGuQ8j6+5k6mTVZWUPMs9EbcZzZrTov5cyGxPh7Ypc7klGBRcmpfU/U=
   - secure: Tv+6M9jobOlOf/vJYFo414etjQ3YSsVrRVv34nDGom5wb9Czn3UPwG/N3GdOkIdAH6J8rHbTPv5ZXI2DO4s4g2ovMjj9YchPUoBSCehIgU6T65wNAj6JzInQBnQ0K25J63qZwiAI1GgVmj+EIZAXJEDWvHY179wosRQF8RHc0odsWobLP2ay2Mzp3QGkaKcp4PQ96RV5hY0iXHjOwmafcdA2mp3V71hm4emEbU4LN3wk3Ds04+FHuJWY+ZQ0h4fA7Sk4FdeS8XV7uwu0ObGU4XJM0dZL70jnbRUD6xv6hIvdE2ugymCVUwNvob4FOMmsUNg1RFS9UJkm0OhmsTTOM2F0vcBIDb0E8PrvS8JTjzh49V6owZnwyNaQOOMQC/5VMBn8jBRocrF8RhLR7Af8JJ5gO64KC6bwbojnsb8UjPnuVvbOogKJhdKCOCEw3RoLNRM7HAevlaBtSuj9UiQC8LVCszS4nD5K29Bx1BvmHVZDlf0kYoC9GmFx9wAdLbiIEouD9BHGQzX5h3Qb/wmpWK3A9G1r22M9tjefaCe0o96iQqCRAEQv5OnjrKBR/Fp5+3VxOaRmvvUjMXoc1agyRDZvFmbqHhitTSjZQ5znMC6iQ/k4jIoULoTjTy6rz3Jv1Vb9+Dj5NmLU5VpfpmjUDyiAVd2v1pXL9nQ6uqPLet8=
 
-addons:
-  sonarcloud:
-    organization: "sivaprasadreddy-github"
-    token:
-      secure: bd9df99c9ea3e00e9609ea9cb0399225e435f2c7
-
-script:
-  - ./mvn clean install -B
-  - ./mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
+#addons:
+#  sonarcloud:
+#    organization: "sivaprasadreddy-github"
+#    token:
+#      secure: bd9df99c9ea3e00e9609ea9cb0399225e435f2c7
+#
+#script:
+#  - ./mvn clean install -B
+#  - ./mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
 
 deploy:
   provider: heroku
