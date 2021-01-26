@@ -16,7 +16,7 @@ export class NotificationComponent implements OnInit, OnDestroy {
   notificationSubscription: Subscription;
 
   constructor(private notificationService: NotificationService) {
-    this.notificationSubscription = this.notificationService.displayNotificatoin().subscribe(data => {
+    this.notificationSubscription = this.notificationService.displayNotification().subscribe(data => {
       this.message = data.message;
       let notificationType = data.type;
       if (this.isDefined(this.message)) {
