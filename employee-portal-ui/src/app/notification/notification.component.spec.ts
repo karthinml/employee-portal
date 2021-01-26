@@ -61,6 +61,11 @@ describe('NotificationComponent', () => {
     expect(component.background).toBe('green');
     expect(component.height).toBe('3em');
     expect(component.messageNotification).toHaveBeenCalled();
+    data.type = 'error';
+    notificationService.notify(data.message, data.type);
+    fixture.detectChanges();
+    fixture.detectChanges();
+    expect(component.background).toBe('red');
   });
 
 });
