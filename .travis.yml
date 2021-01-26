@@ -14,8 +14,8 @@ addons:
       secure: bd9df99c9ea3e00e9609ea9cb0399225e435f2c7
 
 script:
-  - ./mvnw clean install -B
-  - ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
+  - ./mvn clean install -B
+  - ./mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
 
 deploy:
   provider: heroku
