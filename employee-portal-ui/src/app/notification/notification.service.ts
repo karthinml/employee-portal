@@ -9,7 +9,7 @@ export class NotificationService {
     this.notification.next({"message": errorMessage, "type": errorType});
   }
 
-  displayNotificatoin(): Observable<any> {
+  displayNotification(): Observable<any> {
     return this.notification.asObservable();
   }
 }

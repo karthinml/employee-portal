@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Employee} from "../model/employee";
 import {EmployeeService} from "../employee.service";
@@ -9,7 +9,7 @@ import {NotificationService} from "../notification/notification.service";
   templateUrl: './employee-registration.component.html',
   styleUrls: ['./employee-registration.component.css']
 })
-export class EmployeeRegistrationComponent implements OnInit {
+export class EmployeeRegistrationComponent {
 
   @Output() closeRegistrationPage: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -25,10 +25,6 @@ export class EmployeeRegistrationComponent implements OnInit {
       dateOfBirth: new FormControl("", Validators.required),
       department: new FormControl("", Validators.required)
     });
-  }
-
-  ngOnInit(): void {
-
   }
 
   registerEmployee(employee: Employee) {
