@@ -37,7 +37,7 @@ public class EmployeeController {
     }
 
     @GetMapping(produces = "application/json")
-    @ApiOperation(value = "Get list of employees from employee portal",
+    @ApiOperation(value = "Get list of employees from employee portal.",
             response = Employee.class, responseContainer = "List")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "List of employees from employee portal")
