@@ -8,7 +8,7 @@ import {NOTIFICATION_DISPLAY_DURATION_IN_SECONDS} from '../app.constants';
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.css']
 })
-export class NotificationComponent implements OnInit, OnDestroy {
+export class NotificationComponent implements OnDestroy {
 
   message: string = "";
   background: string = 'none';
@@ -16,7 +16,7 @@ export class NotificationComponent implements OnInit, OnDestroy {
   notificationSubscription: Subscription;
 
   constructor(private notificationService: NotificationService) {
-    this.notificationSubscription = this.notificationService.displayNotificatoin().subscribe(data => {
+    this.notificationSubscription = this.notificationService.displayNotification().subscribe(data => {
       this.message = data.message;
       let notificationType = data.type;
       if (this.isDefined(this.message)) {
@@ -25,10 +25,6 @@ export class NotificationComponent implements OnInit, OnDestroy {
         this.messageNotification();
       }
     });
-  }
-
-  ngOnInit() {
-
   }
 
   ngOnDestroy() {
