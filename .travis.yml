@@ -20,6 +20,6 @@ env:
 deploy:
   provider: heroku
   api_key: $HEROKU_TOKEN
-  app: employee-portal
+  app: emplyee-portal
   on:
     branch: feature/ci
