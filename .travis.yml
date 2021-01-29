@@ -14,7 +14,7 @@ env:
 #      secure: bd9df99c9ea3e00e9609ea9cb0399225e435f2c7
 #
 script:
-  - ./mvn clean install -B
+  - mvn clean install
 #  - ./mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
 
 deploy:
