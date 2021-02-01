@@ -24,3 +24,4 @@ deploy:
   on:
     branch: feature/ci
   skip_cleanup: true
+  run: mvn spring-boot:run
